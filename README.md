@@ -15,7 +15,7 @@ This project aims to bridge that gap by integrating KMPDC data with the Google M
 ## Dataset Description
 ### Source
 - Kenya Medical Practitioners and Dentists Council (KMPDC) (https://kmpdc.go.ke/Registers/HealthFacilities)
-- Google Maps API (Used for geocoding and place verification.)
+- Google My Maps (Used for geocoding and place verification.)
 
 ### Features
 Typical attributes include:
@@ -33,18 +33,23 @@ Approximately 14,000+ licensed health facilities (as per the latest KMPDC list).
 | Tool / Library                 | Purpose                                 |
 | ------------------------------ | --------------------------------------- |
 | **Python 3.x**                 | Core programming language               |
-| **Google Maps API**            | Location search and geocoding           |
+| **Google My Maps**             | Creatign a custom map                   |
 | **Requests**                   | API calls to Google Maps                |
 | **Jupyter Notebook / VS Code** | Development environment                 |
 
-## Proposed Methodology
-1. Download the KMPDC dataset of licensed facilities.
-2. Standardize facility names and format locations.
-3. Connect to the Google Maps API and fetch the latitude and longitude for each hospital name.
-4. Match each KMPDC facility name to the closest Google Maps result based on name similarity and location metadata.
-5. Represent each facility on a map of all matched facilities, with each marker showing the facility name and details.
+## Methodology
+1. Create and activate a virtual environment.
+2. Install and import the following resources:
+    1. `requests` module  [link to docs](https://requests.readthedocs.io/en/latest/)
+    2. `BeautifulSoup` class from `bs4` module    [link to docs](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#)
+    3. `csv` module
+3. Download the KMPDC dataset of licensed facilities and store it in a csv.
+4. Standardize facility names and create a geocoding search term by combining facility name, address, facility type and county, and adding 'Kenya' at the end.
+5. Save all the information into a csv.
+6. Upload the csv onto Google My Maps for geocoding.
+7. Group by facility type and update the markers/icons to match the facility type.
 
 ## Expected Outcomes
 - A verified dataset of all licensed hospitals in Kenya.
-- A Python-based workflow that automates data cleaning, matching, and mapping.
+- A Python-based workflow that automates data scraping and cleaning.
 - A map view displaying all verified hospitals and details of each facility.
